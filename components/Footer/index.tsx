@@ -7,6 +7,8 @@ import { t, tr } from "@/lib/i18n";
 import { Clock3, MapPin, MessageCircle } from "lucide-react";
 import SiteWordmark from "@/components/layout/SiteWordmark";
 import {
+  SITE_PHONE_ALT_DISPLAY,
+  SITE_PHONE_ALT_TEL,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_TEL,
   siteAddress,
@@ -77,6 +79,14 @@ export default function Footer() {
                 className="text-[15px] font-semibold text-[color:var(--text-charcoal)] underline-offset-2 transition-colors hover:text-[color:var(--site-accent)] hover:underline"
               >
                 {SITE_PHONE_DISPLAY}
+              </a>
+            </p>
+            <p>
+              <a
+                href={SITE_PHONE_ALT_TEL}
+                className="text-[15px] font-semibold text-[color:var(--text-charcoal)] underline-offset-2 transition-colors hover:text-[color:var(--site-accent)] hover:underline"
+              >
+                {SITE_PHONE_ALT_DISPLAY}
               </a>
             </p>
             <p className="inline-flex lg:justify-end">

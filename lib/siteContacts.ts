@@ -1,8 +1,14 @@
 /** Основной телефон: звонки, WhatsApp, заказы */
-export const SITE_PHONE_DIGITS = "77013522225";
+export const SITE_PHONE_DIGITS = "77766822225";
 
-export const SITE_PHONE_DISPLAY = "+7 701 352 22 25";
+export const SITE_PHONE_DISPLAY = "+7 776 682 22 25";
 export const SITE_PHONE_TEL = `tel:+${SITE_PHONE_DIGITS}`;
+
+/** Дополнительный телефон менеджера */
+export const SITE_PHONE_ALT_DIGITS = "77013522223";
+
+export const SITE_PHONE_ALT_DISPLAY = "+7 701 352 22 23";
+export const SITE_PHONE_ALT_TEL = `tel:+${SITE_PHONE_ALT_DIGITS}`;
 
 /** Техподдержка — ошибки и сбои на сайте */
 export const SITE_SUPPORT_PHONE_DIGITS = "77759989997";
@@ -27,12 +33,12 @@ export type SiteLang = "ru" | "kz" | "uz";
 
 /** Адрес магазина и самовывоза */
 export const SITE_ADDRESS = {
-  ru: "г. Шымкент, ул. Исмаил ата, 428",
-  kz: "Шымкент, Исмаил ата көшесі, 428",
-  uz: "Chimkent, Ismoil ata ko'chasi, 428",
+  ru: "г. Шымкент, ул. Ибрагим Ата, 260/1, мкр. Исфиджаб, 1 этаж",
+  kz: "Шымкент, Ибрагим Ата көшесі, 260/1, Исфиджаб т., 1-қабат",
+  uz: "Chimkent, Ibragim Ata ko'chasi, 260/1, Isfidjab MFY, 1-qavat",
 } as const;
 
-export const SITE_MAP_QUERY = "Исмаил ата 428, Шымкент, Казахстан";
+export const SITE_MAP_QUERY = "Ибрагим Ата 260/1, Шымкент, Казахстан";
 
 export function siteAddress(lang: SiteLang): string {
   return SITE_ADDRESS[lang];

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/useLang";
-import { t, tr } from "@/lib/i18n";
+import { t, tr, formatPositionsCount } from "@/lib/i18n";
 import { fetchPublicProductsPage, type PublicProduct } from "@/lib/publicApi";
 import CatalogProductCard from "@/components/catalog/CatalogProductCard";
 import { ProductCardGridSkeleton, TopLoadingBar } from "@/components/ui/Skeleton";
@@ -89,8 +89,7 @@ export default function HomeFeatured() {
             </h2>
             {total > 0 && (
               <p className="mt-1 text-sm text-[color:var(--text-silver)]">
-                {total.toLocaleString("ru-RU")}{" "}
-                {lang === "ru" ? "позиций в каталоге" : lang === "kz" ? "каталогтағы позиция" : "pozitsiya katalogda"}
+                {formatPositionsCount(total, lang)}
               </p>
             )}
           </div>
@@ -109,7 +108,7 @@ export default function HomeFeatured() {
             <ProductCardGridSkeleton count={8} />
           </>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 sm:gap-4">
+          <div className="catalog-product-grid home-featured-grid">
             {top.map((p) => (
               <CatalogProductCard
                 key={p.id}
@@ -118,6 +117,7 @@ export default function HomeFeatured() {
                 categoryName={p.category_name || "—"}
                 inStockLabel={inStock}
                 outStockLabel={outStock}
+                compact
                 onAddToCart={() => {
                   if (p.quantity <= 0) return;
                   addItem({

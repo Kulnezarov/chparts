@@ -234,6 +234,18 @@ export function buildCategoryFilterFlatList(categories: PublicCategory[]): Categ
   return rows;
 }
 
+/** Краткая строка подкатегорий для карточек на главной. */
+export function formatSubcategoryPreview(
+  children: PublicCategory[],
+  maxItems = 3,
+): string | null {
+  if (!children.length) return null;
+  const names = children.slice(0, maxItems).map((c) => c.name.trim());
+  const rest = children.length - names.length;
+  if (rest > 0) return `${names.join(", ")} +${rest}`;
+  return names.join(", ");
+}
+
 type IconRule = { keys: string[]; tone: string };
 
 const ICON_RULES: IconRule[] = [

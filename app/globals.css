@@ -412,6 +412,41 @@
   transform: translateY(-2px);
 }
 
+/* Главная: карточки категорий — серый фон, иконка + подкатегории */
+.category-card {
+  border-radius: 1.125rem;
+  background: linear-gradient(135deg, #e9edf2 0%, #dfe4ea 100%);
+  border: 1px solid rgba(28, 28, 30, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.category-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(51, 144, 236, 0.35);
+  box-shadow: 0 10px 28px rgba(51, 144, 236, 0.14), 0 2px 8px rgba(28, 28, 30, 0.06);
+}
+.category-card__action {
+  margin-top: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--site-accent);
+  transition: gap 0.2s ease, opacity 0.2s ease;
+}
+.category-card:hover .category-card__action {
+  opacity: 0.92;
+}
+.category-card__action-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform 0.2s ease;
+}
+.category-card:hover .category-card__action-icon {
+  transform: translateX(2px);
+}
+
 /* Telegram design system */
 .section-title {
   @apply text-xl font-semibold tracking-tight text-[color:var(--text-charcoal)] sm:text-2xl;
@@ -758,6 +793,36 @@ button:focus-visible {
 
   .catalog-product-grid {
     @apply grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4;
+  }
+
+  /* Главная: карточки как на телефоне — без «десктопного» увеличения */
+  .home-featured-grid .product-card--grid .product-card-body {
+    @apply gap-1.5 p-3;
+  }
+
+  .home-featured-grid .product-card--grid .product-card-title {
+    @apply min-h-[2.35rem] text-[14px] leading-snug;
+  }
+
+  .home-featured-grid .product-card--grid .product-card-purpose,
+  .home-featured-grid .product-card--grid .product-card-highlights {
+    display: none;
+  }
+
+  .home-featured-grid .product-card--grid .product-card-compatibility {
+    @apply line-clamp-1 px-2 py-1 text-[10px];
+  }
+
+  .home-featured-grid .product-card--grid .product-card-footer {
+    @apply gap-2 pt-2.5;
+  }
+
+  .home-featured-grid .product-card--grid .product-card-price {
+    @apply text-[17px];
+  }
+
+  .home-featured-grid .product-card--grid .product-card-media {
+    aspect-ratio: 4 / 3;
   }
 
   @media (max-width: 380px) {
@@ -1513,11 +1578,11 @@ button:focus-visible {
   }
 
   .product-card-meta {
-    @apply hidden line-clamp-1 text-[11px] font-medium text-[color:var(--text-silver)] sm:block;
+    @apply line-clamp-1 text-[11px] font-medium text-[color:var(--text-silver)];
   }
 
   .product-card-title {
-    @apply line-clamp-2 min-h-[2.35rem] text-[14px] font-semibold leading-snug text-[color:var(--text-charcoal)] transition-colors hover:text-[color:var(--site-accent)] sm:min-h-[2.5rem] sm:text-[15px];
+    @apply line-clamp-2 min-h-[2.35rem] text-[14px] font-semibold leading-snug text-[color:var(--text-charcoal)] transition-colors hover:text-[color:var(--site-accent)];
   }
 
   .product-card-purpose {
@@ -1537,7 +1602,7 @@ button:focus-visible {
   }
 
   .product-card-sku {
-    @apply hidden text-[11px] tabular-nums text-[color:var(--text-silver)] sm:block;
+    @apply text-[11px] tabular-nums text-[color:var(--text-silver)];
   }
 
   .product-card-compatibility {

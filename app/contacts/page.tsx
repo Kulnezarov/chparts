@@ -8,6 +8,8 @@ import InnerPageLayout from "@/components/layout/InnerPageLayout";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import {
   SITE_MAP_QUERY,
+  SITE_PHONE_ALT_DISPLAY,
+  SITE_PHONE_ALT_TEL,
   SITE_PHONE_DISPLAY,
   SITE_PHONE_TEL,
   SITE_SUPPORT_PHONE_DISPLAY,
@@ -43,6 +45,7 @@ export default function ContactsPage() {
       supportHint: "Если страница не открывается, не грузится каталог или что-то сломалось",
       supportCall: "Позвонить в поддержку",
       whatsapp: "Написать в WhatsApp",
+      phoneAlt: "Доп. номер",
       address: siteAddress("ru"),
       days: [
         ["Понедельник — четверг", "10:00 — 20:00"],
@@ -68,6 +71,7 @@ export default function ContactsPage() {
       supportHint: "Бет ашылмаса, каталог жүктелмесе немесе бір нәрсе істемесе",
       supportCall: "Қолдауға қоңырау",
       whatsapp: "WhatsApp жазу",
+      phoneAlt: "Қос. нөмір",
       address: siteAddress("kz"),
       days: [
         ["Дүйсенбі — бейсенбі", "10:00 — 20:00"],
@@ -93,6 +97,7 @@ export default function ContactsPage() {
       supportHint: "Sahifa ochilmasa, katalog yuklanmasa yoki biror narsa ishlamasa",
       supportCall: "Qo'llab-quvvatlashga qo'ng'iroq",
       whatsapp: "WhatsAppga yozish",
+      phoneAlt: "Qo'sh. raqam",
       address: siteAddress("uz"),
       days: [
         ["Dushanba — payshanba", "10:00 — 20:00"],
@@ -151,6 +156,16 @@ export default function ContactsPage() {
               >
                 <Phone size={18} className="shrink-0 accent-icon" />
                 {SITE_PHONE_DISPLAY}
+              </a>
+              <a
+                href={SITE_PHONE_ALT_TEL}
+                className="mt-2 flex items-center gap-2.5 rounded-xl border border-black/[0.08] bg-white px-3.5 py-3 text-base font-bold tabular-nums text-[color:var(--text-charcoal)] shadow-sm transition-colors hover:border-[color:var(--site-accent)]/25 hover:bg-[color:var(--site-accent-soft)]"
+              >
+                <Phone size={18} className="shrink-0 accent-icon" />
+                <span className="flex min-w-0 flex-col items-start gap-0.5">
+                  <span>{SITE_PHONE_ALT_DISPLAY}</span>
+                  <span className="text-[11px] font-semibold text-[color:var(--text-silver)]">{content.phoneAlt}</span>
+                </span>
               </a>
               <a
                 href={whatsappUrl}

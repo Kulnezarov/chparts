@@ -55,10 +55,11 @@ export function HomeCategoriesSkeleton() {
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 sm:gap-4">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="pro-card min-h-[5.5rem] space-y-3 p-4">
-              <Skeleton className="h-9 w-9 rounded-xl" />
+            <div key={i} className="category-card min-h-[8.5rem] space-y-3 p-4">
+              <Skeleton className="h-10 w-10 rounded-xl" />
               <Skeleton className="h-4 w-full rounded-md" />
-              <Skeleton className="h-3 w-16 rounded-md" />
+              <Skeleton className="h-3 w-[90%] rounded-md" />
+              <Skeleton className="mt-1 h-3 w-16 rounded-md" />
             </div>
           ))}
         </div>
@@ -79,7 +80,7 @@ export function HomeFeaturedSkeleton() {
           </div>
           <Skeleton className="h-10 w-28 shrink-0 rounded-full" />
         </div>
-        <ProductCardGridSkeleton count={8} />
+        <ProductCardGridSkeleton count={8} className="home-featured-grid" />
       </div>
     </section>
   );

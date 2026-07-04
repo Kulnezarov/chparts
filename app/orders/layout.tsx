@@ -5,7 +5,7 @@ import { NOINDEX_METADATA } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Мои заказы",
   description:
-    "Список резервов в браузере и просмотр по ссылке /orders?reserve=НОМЕР с любого устройства. Статусы с сервера, WhatsApp +7 701 352 22 25.",
+    "Список резервов в браузере и просмотр по ссылке /orders?reserve=НОМЕР с любого устройства. Статусы с сервера, WhatsApp +7 776 682 22 25.",
   ...NOINDEX_METADATA,
 };
 

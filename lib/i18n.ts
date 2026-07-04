@@ -68,9 +68,9 @@ export const t = {
       uz: "WhatsApp 5–20 daqiqada javob",
     } as Translatable,
     badgePickup: {
-      ru: "Самовывоз: Исмаил ата 428",
-      kz: "Өзі алу: Исмаил ата 428",
-      uz: "O'zi olib ketish: Ismoil ata 428",
+      ru: "Самовывоз: Ибрагим Ата 260/1",
+      kz: "Өзі алу: Ибрагим Ата 260/1",
+      uz: "O'zi olib ketish: Ibragim Ata 260/1",
     } as Translatable,
     notFoundCta: {
       ru: "Не нашли деталь? Напишите артикул — подберём",
@@ -154,7 +154,7 @@ export const t = {
     goods: { ru: "товаров", kz: "тауар", uz: "mahsulot" } as Translatable,
     sectionsTitle: { ru: "Разделы каталога", kz: "Каталог бөлімдері", uz: "Katalog bo'limlari" } as Translatable,
     categoriesCount: { ru: "категорий", kz: "санат", uz: "kategoriya" } as Translatable,
-    browse: { ru: "Смотреть", kz: "Қарау", uz: "Ko'rish" } as Translatable,
+    browse: { ru: "В раздел", kz: "Бөлімге", uz: "Bo'limga" } as Translatable,
     subtitle: {
       ru: "Категории и быстрый переход в полный каталог",
       kz: "Санаттар және толық каталогқа жылдам өту",
@@ -248,4 +248,26 @@ export const t = {
 
 export function tr(obj: Translatable, lang: Lang): string {
   return obj[lang];
+}
+
+/** «821 позиций» — без «в каталоге», с правильным числом для RU. */
+export function formatPositionsCount(count: number, lang: Lang): string {
+  const n = Math.max(0, Math.floor(count));
+  const locale = lang === "kz" ? "kk-KZ" : lang === "uz" ? "uz-UZ" : "ru-RU";
+  const formatted = n.toLocaleString(locale);
+
+  if (lang === "ru") {
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    const word =
+      mod10 === 1 && mod100 !== 11
+        ? "позиция"
+        : mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)
+          ? "позиции"
+          : "позиций";
+    return `${formatted} ${word}`;
+  }
+
+  if (lang === "kz") return `${formatted} позиция`;
+  return `${formatted} pozitsiya`;
 }

@@ -28,9 +28,19 @@ export function ProductCardSkeleton({ compact = false }: { compact?: boolean }) 
   );
 }
 
-export function ProductCardGridSkeleton({ count = 8 }: { count?: number }) {
+export function ProductCardGridSkeleton({
+  count = 8,
+  className = "",
+}: {
+  count?: number;
+  className?: string;
+}) {
   return (
-    <div className="catalog-product-grid" aria-busy="true" aria-label="Загрузка товаров">
+    <div
+      className={`catalog-product-grid ${className}`.trim()}
+      aria-busy="true"
+      aria-label="Загрузка товаров"
+    >
       {Array.from({ length: count }).map((_, i) => (
         <ProductCardSkeleton key={i} />
       ))}
