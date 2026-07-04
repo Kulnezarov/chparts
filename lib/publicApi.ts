@@ -615,6 +615,7 @@ export interface PublicReserveLineDetail {
   product_id: number;
   quantity: number;
   status: string;
+  is_cancelled?: boolean;
   name?: string | null;
   barcode?: string | null;
   sku?: string | null;
@@ -655,10 +656,12 @@ function parseReserveDetailJson(json: unknown, reserveId: number): PublicReserve
     const qty = r.quantity ?? r.qty ?? 1;
     const status = r.status ?? r.line_status ?? r.state ?? "pending";
     const nameRaw = r.name ?? r.product_name ?? r.productName;
+    const lineCancelled = r.is_cancelled === true || r.cancelled === true;
     lines.push({
       product_id: Number(pid),
       quantity: Math.max(1, Number(qty) || 1),
       status: String(status),
+      is_cancelled: lineCancelled,
       name: nameRaw != null ? String(nameRaw) : null,
       barcode: r.barcode != null ? String(r.barcode) : null,
       sku: r.sku != null ? String(r.sku) : null,

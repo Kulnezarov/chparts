@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/Footer";
@@ -10,12 +9,6 @@ import DeferredOverlays from "@/components/layout/DeferredOverlays";
 import { ScrollChromeProvider } from "@/lib/ScrollChromeContext";
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/siteConfig";
-
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin", "cyrillic"],
-  display: "swap",
-});
 
 export const viewport = {
   width: "device-width",
@@ -76,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} h-full antialiased`}>
+    <html lang="ru" className="h-full antialiased">
       <body className="site-body min-h-full flex flex-col antialiased">
         <JsonLd data={organizationJsonLd} />
         <SkipToMain />

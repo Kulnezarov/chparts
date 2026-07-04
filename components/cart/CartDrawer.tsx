@@ -121,9 +121,9 @@ const labelsByLang = {
     perItem: "1 дана үшін",
   },
   uz: {
-    title: "Сават",
+    title: "Savat",
     itemsCount: (n: number) => `${n} ta pozitsiya`,
-    empty: "Сavат бош",
+    empty: "Savat bo'sh",
     emptyHint: "Katalogdan detal qo'shing — bir daqiqada rezerv qilamiz.",
     toCatalog: "Katalog",
     name: "Ism",

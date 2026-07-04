@@ -1,3 +1,4 @@
+@import "@fontsource-variable/inter/index.css";
 @import "tailwindcss";
 
 @keyframes fadeIn {
@@ -327,7 +328,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
 }
 
 .site-body {

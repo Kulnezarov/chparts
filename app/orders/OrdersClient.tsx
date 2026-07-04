@@ -8,8 +8,8 @@ import { t, tr } from "@/lib/i18n";
 import InnerPageLayout from "@/components/layout/InnerPageLayout";
 import { useOrdersStore, type SavedOrderLine } from "@/store/ordersStore";
 import { fetchPublicReserveDetail, type PublicReserveDetail } from "@/lib/publicApi";
-import { normalizeLineStatus, type OrderLineStatus } from "@/lib/reserveStatus";
-import type { OrderWarehouseStatus } from "@/lib/orderClientHints";
+import { resolveLineStatusFromWarehouse, type OrderLineStatus } from "@/lib/reserveStatus";
+import { getOrderStatusPresentation, type OrderWarehouseStatus } from "@/lib/orderClientHints";
 import ProductImage from "@/components/ui/ProductImage";
 import ConfirmDialog from "@/components/ui/ConfirmDialog";
 import { siteWhatsAppHrefWithText, whatsappPrefillReserveQuestion } from "@/lib/siteContacts";
@@ -74,7 +74,12 @@ export default function OrdersClient() {
               o.reserveId,
               detail.lines.map((l) => ({
                 product_id: l.product_id,
-                status: normalizeLineStatus(l.status),
+                status: resolveLineStatusFromWarehouse({
+                  rawStatus: l.status,
+                  lineCancelled: l.is_cancelled,
+                  orderCancelled: detail.is_cancelled,
+                  orderFulfilled: detail.is_fulfilled,
+                }),
                 name: l.name,
                 sku: l.sku,
                 brandName: l.brand_name,
@@ -380,6 +385,27 @@ export default function OrdersClient() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 border-b border-black/[0.06] px-5 py-3 sm:px-6">
+                  {(() => {
+                    const presentation = getOrderStatusPresentation(lang, o.warehouseStatus);
+                    if (!presentation || (!o.warehouseStatus?.isCancelled && !o.warehouseStatus?.isFulfilled)) {
+                      return null;
+                    }
+                    return (
+                      <div
+                        className={`mb-1 w-full rounded-xl border px-3.5 py-3 text-sm ${
+                          presentation.tone === "cancelled"
+                            ? "border-rose-200 bg-rose-50 text-rose-900"
+                            : "border-emerald-200 bg-emerald-50 text-emerald-900"
+                        }`}
+                      >
+                        <p className="font-semibold">{presentation.title}</p>
+                        <p className="mt-1 leading-relaxed">{presentation.message}</p>
+                        {presentation.hint ? (
+                          <p className="mt-1 text-xs opacity-90">{presentation.hint}</p>
+                        ) : null}
+                      </div>
+                    );
+                  })()}
                   <a
                     href={siteWhatsAppHrefWithText(whatsappPrefillReserveQuestion(lang, o.reserveId))}
                     target="_blank"
