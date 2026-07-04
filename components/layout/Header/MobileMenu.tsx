@@ -9,13 +9,8 @@ import { getNavLinks } from "@/lib/navLinks";
 import { useLang } from "@/lib/useLang";
 import { t, tr } from "@/lib/i18n";
 import LangSwitcher from "./LangSwitcher";
-import { useLangStore, type Lang } from "@/store/langStore";
-
-const langs: { id: Lang; label: string }[] = [
-  { id: "ru", label: "РУС" },
-  { id: "kz", label: "ҚАЗ" },
-  { id: "uz", label: "UZB" },
-];
+import { useLangStore } from "@/store/langStore";
+import { SITE_LANG_OPTIONS } from "@/lib/langOptions";
 
 export default function MobileMenu() {
   const lang = useLang();
@@ -73,7 +68,7 @@ export default function MobileMenu() {
               ))}
             </nav>
             <div className="mt-auto flex gap-1 rounded-full border border-black/[0.08] bg-black/[0.04] p-1 sm:hidden">
-              {langs.map((l) => (
+              {SITE_LANG_OPTIONS.map((l) => (
                 <button
                   key={l.id}
                   type="button"

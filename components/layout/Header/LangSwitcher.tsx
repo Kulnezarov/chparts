@@ -1,18 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLangStore, type Lang } from "@/store/langStore";
-
-const langs: { id: Lang; label: string }[] = [
-  { id: "ru", label: "РУС" },
-  { id: "kz", label: "ҚАЗ" },
-  { id: "uz", label: "UZB" },
-];
+import { useLangStore } from "@/store/langStore";
+import { SITE_LANG_OPTIONS } from "@/lib/langOptions";
 
 export default function LangSwitcher() {
   const lang = useLangStore((s) => s.lang);
   const setLang = useLangStore((s) => s.setLang);
-  const idx = langs.findIndex((l) => l.id === lang);
+  const idx = SITE_LANG_OPTIONS.findIndex((l) => l.id === lang);
 
   return (
     <div className="header-lang-switch" role="group" aria-label="Language">
@@ -21,11 +16,11 @@ export default function LangSwitcher() {
         layout
         transition={{ type: "spring", stiffness: 480, damping: 32 }}
         style={{
-          width: `calc(${100 / langs.length}% - 2px)`,
-          left: `calc(${idx * (100 / langs.length)}% + 1px)`,
+          width: `calc(${100 / SITE_LANG_OPTIONS.length}% - 2px)`,
+          left: `calc(${idx * (100 / SITE_LANG_OPTIONS.length)}% + 1px)`,
         }}
       />
-      {langs.map((l) => (
+      {SITE_LANG_OPTIONS.map((l) => (
         <button
           key={l.id}
           type="button"
