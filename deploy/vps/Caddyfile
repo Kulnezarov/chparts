@@ -1,0 +1,15 @@
+# HTTPS для chparts.kz (порт 443).
+# SkladPro занимает :80 на том же VPS — HTTP→HTTPS для chparts настраивается в DNS/Cloudflare
+# или добавьте блок handle в Caddy SkladPro (см. docs/DEPLOY_AND_SEO.md).
+
+chparts.kz, www.chparts.kz {
+	encode gzip zstd
+
+	@www host www.chparts.kz
+	redir @www https://chparts.kz{uri} permanent
+
+	reverse_proxy chparts:3000 {
+		header_up X-Forwarded-Proto {scheme}
+		header_up X-Forwarded-Host {host}
+	}
+}

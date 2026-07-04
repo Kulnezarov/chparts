@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" role="img" aria-label="Dongfeng" fill="none">
+  <title>Dongfeng</title>
+  <defs>
+    <linearGradient id="dfg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c41230"/>
+      <stop offset="100%" stop-color="#8b0c22"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="32" rx="30" ry="30" fill="url(#dfg)"/>
+  <path fill="#fff" d="M32 12c-6 0-11 5-12 12h7c.8-2.2 2.6-3.5 5-3.5s4.2 1.3 5 3.5h7c-1-7-6-12-12-12zm-14 20c1 7 6 12 12 12s11-5 12-12h-7c-.8 2.2-2.6 3.5-5 3.5s-4.2-1.3-5-3.5h-7z" opacity="0.95"/>
+  <text x="72" y="30" font-family="ui-sans-serif,system-ui,sans-serif" font-size="20" font-weight="800" fill="#1e293b" letter-spacing="0.04em">DONGFENG</text>
+  <text x="72" y="48" font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" font-weight="600" fill="#94a3b8" letter-spacing="0.35em">MOTOR</text>
+</svg>
